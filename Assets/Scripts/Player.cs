@@ -22,20 +22,20 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource destroyEnemySound;
 
     void Start()
-    {       
+    {
         rb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
      //   gameSound.Play();
     }
 
-    
+
     void Update()
-    {  
+    {
         // Methode classique
-       // if (Input.GetKeyDown("space"))
-       // {
-       //   rb.velocity = new Vector3(0,5f,0);
-       //  }
+        // if (Input.GetKeyDown("space"))
+        // {
+        //   rb.velocity = new Vector3(0,5f,0);
+        //  }
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
 
         if (Input.GetButtonDown("Jump"))
-        {            
+        {
             jump();
         }
         // Animations run
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
     {
         playerAnimator.SetTrigger("Jump"); 
         jumpSound.Play();
-             
+
     }
     void gathering()
     {
