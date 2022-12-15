@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     Rigidbody rb;
     [SerializeField] float movementSpeed = 0.1f;
-    [SerializeField] float jumpForce = 1f;
+    //[SerializeField] float jumpForce = 1f;
     // public bool isJump = false;
     public bool runR = false;
     public bool runL = false;
@@ -19,11 +19,11 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource jumpSound;
     [SerializeField] AudioSource gameSound;
     [SerializeField] AudioSource destroyEnemySound;
-
+       
     void Start()
     {       
         rb = GetComponent<Rigidbody>();
-        playerAnimator = GetComponent
+       // playerAnimator = GetComponent;
         gameSound.Play();
     }
 
