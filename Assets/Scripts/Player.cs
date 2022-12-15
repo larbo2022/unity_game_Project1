@@ -21,20 +21,20 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource destroyEnemySound;
 
     void Start()
-    {       
+    {
         rb = GetComponent<Rigidbody>();
-        playerAnimator = GetComponent
+        // playerAnimator = GetComponent
         gameSound.Play();
     }
 
-    
+
     void Update()
-    {  
+    {
         // Methode classique
-       // if (Input.GetKeyDown("space"))
-       // {
-       //   rb.velocity = new Vector3(0,5f,0);
-       //  }
+        // if (Input.GetKeyDown("space"))
+        // {
+        //   rb.velocity = new Vector3(0,5f,0);
+        //  }
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
 
         if (Input.GetButtonDown("Jump"))
-        {            
+        {
             jump();
         }
         // Animations run
@@ -53,26 +53,26 @@ public class Player : MonoBehaviour
         }
         if (horizontalInput < 0)
         {
-          //  transform.rotation(0.0f, 90.0f, 0.0f);
+            //  transform.rotation(0.0f, 90.0f, 0.0f);
             playerAnimator.SetTrigger("runR");
             runR = false;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
-        { 
+        {
             transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
-        { 
+        {
             transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
         }
     }
 
     void jump()
     {
-           
-        playerAnimator.SetTrigger("Jump"); 
+
+        playerAnimator.SetTrigger("Jump");
         jumpSound.Play();
-             
+
     }
 }
