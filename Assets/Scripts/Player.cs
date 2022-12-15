@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     void Start()
     {       
         rb = GetComponent<Rigidbody>();
-        playerAnimator = GetComponent
+       // playerAnimator = GetComponent
         gameSound.Play();
     }
 
