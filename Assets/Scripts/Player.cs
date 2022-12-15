@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource jumpSound;
     [SerializeField] AudioSource gameSound;
     [SerializeField] AudioSource destroyEnemySound;
-
+       
     void Start()
     {
         rb = GetComponent<Rigidbody>();
