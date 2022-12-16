@@ -11194,6 +11194,7 @@ GameObject:
   - component: {fileID: 2018271280}
   - component: {fileID: 2018271279}
   - component: {fileID: 2018271281}
+  - component: {fileID: 2018271282}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -11335,12 +11336,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018271272}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94784cc74f1037c4da8688df607811a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 410613030}
+--- !u!114 &2018271282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018271272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1a27a37c1d83b4a9ec0d311ad57688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedObjet: {fileID: 410613041}
+  maxDistance: 10
+  moveSpeed: 60
+  updateSpeed: 10
+  currentDistance: 5
+  hideDistance: 1.5
 --- !u!1001 &2021815994
 PrefabInstance:
   m_ObjectHideFlags: 0
