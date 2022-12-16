@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {   //rotation
-    public float moveSpeed = 10f;
-    public float turnSpeed = 50f;
+    public float moveSpeed = 10f;  
+    public float turnSpeed = 5f;
 
     Rigidbody rb;
-    [SerializeField] float movementSpeed = 0.1f;
-    [SerializeField] float jumpForce = 1f;
+    [SerializeField] float movementSpeed = 5f;
+   // [SerializeField] float jumpForce = 1f;
     // public bool isJump = false;
     public bool runR = false;
     public bool runL = false;
-    [SerializeField] private Animator playerAnimator;
-
+    [SerializeField] private Animator playerAnimator;  
+    
+    [SerializeField] AudioSource gatherSound;
     [SerializeField] AudioSource jumpSound;
     [SerializeField] AudioSource gameSound;
     [SerializeField] AudioSource destroyEnemySound;
@@ -23,8 +24,8 @@ public class Player : MonoBehaviour
     void Start()
     {       
         rb = GetComponent<Rigidbody>();
-       // playerAnimator = GetComponent
-        gameSound.Play();
+        playerAnimator = GetComponent<Animator>();
+     //   gameSound.Play();
     }
 
     
@@ -46,33 +47,59 @@ public class Player : MonoBehaviour
             jump();
         }
         // Animations run
+       if (horizontalInput < 0)
+        {
+            playerAnimator.SetTrigger("runR");
+          //  runR = false;
+        }
         if (horizontalInput > 0)
         {
-            playerAnimator.SetTrigger("runL");
-            runL = false;
-        }
-        if (horizontalInput < 0)
-        {
           //  transform.rotation(0.0f, 90.0f, 0.0f);
-            playerAnimator.SetTrigger("runR");
-            runR = false;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        { 
-            transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+            playerAnimator.SetTrigger("runL");
+          //  runL = false;
+        } 
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            playerAnimator.SetTrigger("Walk"); 
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+       /* if (Input.GetKey(KeyCode.RightArrow))
         { 
             transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-        }
-    }
+        }*/
+               
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Sword"))
+        {
+            gathering();
+         //   gameObject.SetActive(false);   
+
+    //        collectionSound.Play();
+        }
+     /*   if (other.gameObject.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+            coins++;
+            coinsCounter.text = "" + coins;
+            collectionSound.Play();
+        }   */
+    }
+    
     void jump()
     {
-           
         playerAnimator.SetTrigger("Jump"); 
         jumpSound.Play();
              
+    }
+    void gathering()
+    {
+        playerAnimator.SetTrigger("Gather");
+        gatherSound.Play();
+       
+
     }
 }
